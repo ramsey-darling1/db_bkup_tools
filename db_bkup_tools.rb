@@ -24,7 +24,7 @@ end
 
 def manage_input(i)
     case i
-    when i == 'help'
+    when "help"
         puts "You asked for help!"
         puts "Available commands are:"
 
@@ -69,3 +69,6 @@ def replace_db_instance(host,user,pass,name)
     client.query("CREATE DATABASE #{name}")
     client.close
 end
+
+#run the program
+db_bkup_tools_main()
