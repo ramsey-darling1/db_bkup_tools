@@ -27,7 +27,8 @@ def manage_input(i)
     when "help"
         puts "You asked for help!"
         puts "Available commands are:"
-
+    when "replace local"
+        puts "Will "
     else
         #recurse until we get something useful
         puts "Sorry, request not understood"
