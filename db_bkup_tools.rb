@@ -27,14 +27,38 @@ def manage_input(i)
     when "help"
         puts "You asked for help!"
         puts "Available commands are:"
+        puts "replace local - replace local database with empty copy of same name"
     when "replace local"
-        puts "Will "
+        puts "Will replace local database with empty database of same name"
+        puts "Enter name of database to replace, cancel to abort:"
+        db_name = gets.strip
+        if db_name == 'cancel'
+            puts "Aborting..."
+            input = get_user_input()
+            manage_input(input)
+        else
+            puts "Please enter database user:"
+            user = gets.strip
+            puts "Please enter password for database user:"
+            pass = gets.strip
+            replace_db_instance('localhost',user,pass,name)
+            puts "Database dropped, new database with same name created"
+            next_phase()
+        end
+    when "exit"
+        puts "Bye!"
+        exit!
     else
         #recurse until we get something useful
         puts "Sorry, request not understood"
         input = get_user_input()
         manage_input(input)
     end
+end
+
+def next_phase
+    input = get_user_input()
+    manage_input(input)
 end
 
 def get_user_input
